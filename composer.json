@@ -14,6 +14,6 @@
         "php": ">=5.3.1"
     },
     "autoload": {
-        "psr-0": {"Deepelopment/Core": "src/"}
+        "psr-0": {"Deepelopment\\Core": "src/"}
     }
 }
