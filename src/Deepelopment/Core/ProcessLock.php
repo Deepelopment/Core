@@ -15,7 +15,7 @@ use RuntimeException;
  *
  * <code>
  * use RuntimeException;
- * use Deepelopment\ProcessLock;
+ * use Deepelopment\Core\ProcessLock;
  *
  * try {
  *     $lock = new ProcessLock(
@@ -73,7 +73,7 @@ class ProcessLock
     /**
      * @param  string $path         Path to lock
      * @param  string $ttl          Time to live for previous lock (in seconds)
-     * @param  bool   $destroyPrev  Flag specifying to destroy previous lock
+     * @param  bool   $destroyPrev  Flag specifying to destroy previous lock if expired
      * @param  string $pid          Process Id
      * @throws RuntimeException  With codes
      *                           self::PREV_LOCK_VALID,
