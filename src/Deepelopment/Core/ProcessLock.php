@@ -1,8 +1,8 @@
 <?php
 /**
- * PHP Deepelopment Framework
+ * PHP Deepelopment Framework.
  *
- * @package Deepelopment
+ * @package Deepelopment/Core
  * @license Unlicense http://unlicense.org/
  */
 
@@ -42,8 +42,8 @@ use RuntimeException;
  * unset($lock);
  * </code>
  *
- * @package Deepelopment
- * @author  deepeloper ({@see https://github.com/deepeloper})
+ * @author deepeloper ({@see https://github.com/deepeloper})
+ * @todo   Implement support of storage layers (not only files)
  */
 class ProcessLock
 {
