@@ -81,10 +81,10 @@ class Logger
     {
         static
             $levels = array(
-                self::NOTICE  => 'NOTICE  ',
-                self::WARNING => 'WARNINNG',
-                self::ERROR   => 'ERROR   ',
-                self::DEBUG   => 'DEBUG   '
+                self::NOTICE  => 'NOTICE ',
+                self::WARNING => 'WARNING',
+                self::ERROR   => 'ERROR  ',
+                self::DEBUG   => 'DEBUG  '
             );
 
         $message = sprintf(
