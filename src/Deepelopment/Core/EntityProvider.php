@@ -8,8 +8,8 @@
 
 ### namespace Deepelopment\Core;
 
-use InvalidArgumentException;
-use RuntimeException;
+### use InvalidArgumentException;
+### use RuntimeException;
 
 /**
  * Entiry provider class.
@@ -108,10 +108,12 @@ class EntityProvider
     /**
      * Returns Id by entity.
      *
+     * @param  mixed
+     * @param  string
      * @return string
      * @throws RuntimeException
      */
-    public function find($entity)
+    public function find($entity, $id)
     {
         $id = array_search($entity, $this->entities, TRUE);
         if (FALSE === $id) {
@@ -142,7 +144,7 @@ class EntityProvider
             $shouldExist
                 ? "Entity '%s' does not exist"
                 : "Entity '%s' already exists";
-        if ($shouldExist ? $exists : !$exists) {
+        if ($shouldExist ? !$exists : $exists) {
             throw new RuntimeException(sprintf($message, $id));
         }
     }
