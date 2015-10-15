@@ -6,10 +6,10 @@
  * @license Unlicense http://unlicense.org/
  */
 
-### namespace Deepelopment\Core;
+namespace Deepelopment\Core;
 
-### use InvalidArgumentException;
-### use RuntimeException;
+use InvalidArgumentException;
+use RuntimeException;
 
 /**
  * Entiry provider class.
@@ -39,12 +39,30 @@ class EntityProvider
      * Adds entity.
      *
      * @param  string $id
+     * @param  mixed  $entity
+     * @param  bool   $asDefault  Flag specifying to use entity as default,
+     *                            first added entity becames also default
+     * @return void
+     */
+    public function add($id, $entity, $asDefault = FALSE)
+    {
+        $this->validateId($id, FALSE);
+        $this->entities[$id] = $entity;
+        if ($asDefault || 1 == sizeof($this->entities)) {
+            $this->setDefaultId($id);
+        }
+    }
+
+    /**
+     * Adds entity by reference.
+     *
+     * @param  string $id
      * @param  mixed  &$entity
      * @param  bool   $asDefault  Flag specifying to use entity as default,
      *                            first added entity becames also default
      * @return void
      */
-    public function add($id, &$entity, $asDefault = FALSE)
+    public function addByReference($id, &$entity, $asDefault = FALSE)
     {
         $this->validateId($id, FALSE);
         $this->entities[$id] = &$entity;
@@ -57,27 +75,47 @@ class EntityProvider
      * Sets default Id.
      *
      * @param  string $id
+     * @param  bool   $byReference
      * @return void
-     * @throws RuntimeException
      */
-    public function setDefaultId($id)
+    public function setDefaultId($id, $byReference = FALSE)
     {
         $this->validateId($id, TRUE);
         $this->defaultId = $id;
-        $this->defaultEntity = &$this->entities[$id];
+        if ($byReference) {
+            $this->defaultEntity = &$this->entities[$id];
+        } else {
+            $this->defaultEntity = $this->entities[$id];
+        }
     }
 
     /**
      * Returns default.
      *
-     * @return &mixed
+     * @return mixed
      * @throws RuntimeException
      */
-    public function &getDefault()
+    public function getDefault()
     {
         if (is_null($this->defaultId)) {
             throw new RuntimeException('No default entity found');
         }
+
+        return $this->defaultEntity;
+    }
+
+    /**
+     * Returns default by reference.
+     *
+     * @return mixed
+     * @throws RuntimeException
+     */
+    public function &getDefaultByReference()
+    {
+        if (is_null($this->defaultId)) {
+            throw new RuntimeException('No default entity found');
+        }
+
         return $this->defaultEntity;
     }
 
@@ -113,7 +151,7 @@ class EntityProvider
      * @return string
      * @throws RuntimeException
      */
-    public function find($entity, $id)
+    public function find($entity)
     {
         $id = array_search($entity, $this->entities, TRUE);
         if (FALSE === $id) {
