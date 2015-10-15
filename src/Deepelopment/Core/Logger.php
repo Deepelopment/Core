@@ -1,8 +1,8 @@
 <?php
 /**
- * PHP Deepelopment Framework
+ * PHP Deepelopment Framework.
  *
- * @package Deepelopment
+ * @package Deepelopment/Core
  * @license Unlicense http://unlicense.org/
  */
 
@@ -24,7 +24,7 @@ namespace Deepelopment\Core;
  *             'path'            => '/path/to/file',
  *             // Flag specifying to rotate log file
  *             'rotate'          => FALSE,
- *             // Flag specifying to erase log sile on start
+ *             // Flag specifying to erase log file on start
  *             'eraseOnStart'    => FALSE,
  *         ),
  *         // ....
@@ -32,9 +32,8 @@ namespace Deepelopment\Core;
  * );
  * </code>
  *
- * @package Deepelopment
- * @author  deepeloper ({@see https://github.com/deepeloper})
- * @todo    Implement support of storage layers (not only files)
+ * @author deepeloper ({@see https://github.com/deepeloper})
+ * @todo   Implement support of storage layers (not only files)
  */
 class Logger
 {
@@ -82,10 +81,10 @@ class Logger
     {
         static
             $levels = array(
-                self::NOTICE  => 'NOTICE  ',
-                self::WARNING => 'WARNINNG',
-                self::ERROR   => 'ERROR   ',
-                self::DEBUG   => 'DEBUG   '
+                self::NOTICE  => 'NOTICE ',
+                self::WARNING => 'WARNING',
+                self::ERROR   => 'ERROR  ',
+                self::DEBUG   => 'DEBUG  '
             );
 
         $message = sprintf(

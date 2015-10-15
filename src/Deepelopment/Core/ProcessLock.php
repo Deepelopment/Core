@@ -1,8 +1,8 @@
 <?php
 /**
- * PHP Deepelopment Framework
+ * PHP Deepelopment Framework.
  *
- * @package Deepelopment
+ * @package Deepelopment/Core
  * @license Unlicense http://unlicense.org/
  */
 
@@ -15,7 +15,7 @@ use RuntimeException;
  *
  * <code>
  * use RuntimeException;
- * use Deepelopment\ProcessLock;
+ * use Deepelopment\Core\ProcessLock;
  *
  * try {
  *     $lock = new ProcessLock(
@@ -42,8 +42,8 @@ use RuntimeException;
  * unset($lock);
  * </code>
  *
- * @package Deepelopment
- * @author  deepeloper ({@see https://github.com/deepeloper})
+ * @author deepeloper ({@see https://github.com/deepeloper})
+ * @todo   Implement support of storage layers (not only files)
  */
 class ProcessLock
 {
@@ -73,7 +73,7 @@ class ProcessLock
     /**
      * @param  string $path         Path to lock
      * @param  string $ttl          Time to live for previous lock (in seconds)
-     * @param  bool   $destroyPrev  Flag specifying to destroy previous lock
+     * @param  bool   $destroyPrev  Flag specifying to destroy previous lock if expired
      * @param  string $pid          Process Id
      * @throws RuntimeException  With codes
      *                           self::PREV_LOCK_VALID,
