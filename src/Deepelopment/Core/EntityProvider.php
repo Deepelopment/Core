@@ -14,7 +14,7 @@ use RuntimeException;
 /**
  * Entiry provider class.
  *
- * @author  deepeloper ({@see https://github.com/deepeloper})
+ * @author deepeloper ({@see https://github.com/deepeloper})
  */
 class EntityProvider
 {
